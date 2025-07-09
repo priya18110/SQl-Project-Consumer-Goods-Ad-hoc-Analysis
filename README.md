@@ -1,0 +1,1 @@
+# SQl-Project-Consumer-Goods-Ad-hoc-Analysis
