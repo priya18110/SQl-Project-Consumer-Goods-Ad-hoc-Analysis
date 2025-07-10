@@ -14,12 +14,19 @@ Below are the main business questions tackled in this project:
 2️⃣ Product Growth: Calculate the percentage increase in unique products from FY 2020 to FY 2021.
 
 3️⃣ Segment Report: Report unique product counts per segment, sorted in descending order.
+
 4️⃣ Growth by Segment: Find which segment had the highest increase in unique products year-over-year.
+
 5️⃣ Cost Analysis: Identify products with the highest and lowest manufacturing costs.
+
 6️⃣ Discount Report: Get the top 5 customers with the highest average pre-invoice discount in FY 2021 (India).
+
 7️⃣ Monthly Sales: Provide gross sales amount for “Atliq Exclusive” by month to identify high and low-performing periods.
+
 8️⃣ Quarterly Sales: Analyze which quarter in FY 2020 had the highest total sold quantity.
+
 9️⃣ Channel Contribution: Determine which sales channel contributed the most gross sales in FY 2021 and its share percentage.
+
 🔟 Top Products: List the top 3 products (by quantity sold) in each division for FY 2021.
 
 📈 Key Insights
@@ -33,6 +40,8 @@ Below are the main business questions tackled in this project:
 
 🛠️ Tools & Skills Used
 SQL: For data extraction and analysis
+
 Power BI : For data visualization 
+
 Canva: For presentation
 
