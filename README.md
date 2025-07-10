@@ -10,7 +10,9 @@ The goal of this project was to answer ad-hoc business questions using SQL to he
 Below are the main business questions tackled in this project:
 
 1️⃣ Markets: Identify all markets where the customer "Atliq Exclusive" operates in the APAC region.
+
 2️⃣ Product Growth: Calculate the percentage increase in unique products from FY 2020 to FY 2021.
+
 3️⃣ Segment Report: Report unique product counts per segment, sorted in descending order.
 4️⃣ Growth by Segment: Find which segment had the highest increase in unique products year-over-year.
 5️⃣ Cost Analysis: Identify products with the highest and lowest manufacturing costs.
