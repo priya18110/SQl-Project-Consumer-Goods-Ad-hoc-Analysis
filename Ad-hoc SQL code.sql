@@ -1,5 +1,5 @@
 # 1. Provide the list of markets in which customer "Atliq Exclusive" operates its
-business in the APAC region.
+business in the APAC region.#
 
 SELECT
     DISTINCT market FROM  dim_customer
@@ -9,7 +9,7 @@ WHERE region = 'APAC' AND customer = "Atliq Exclusive";
 final output contains these fields,
 unique_products_2020
 unique_products_2021
-percentage_chg
+percentage_chg#
 
 with cte20 as
 (select count(distinct product_code) as unique_products_2020
@@ -29,7 +29,7 @@ cte21;
 # 3. Provide a report with all the unique product counts for each segment and
 sort them in descending order of product counts. The final output contains 2 fields,
 segment
-product_count
+product_count#
 
 select segment , count(distinct product_code) as product_count
 from dim_product
@@ -41,7 +41,7 @@ order by product_count desc;
 segment
 product_count_2020
 product_count_2021
-difference
+difference#
 
 with prod_20 as(
 select p.segment , count(distinct fs.product_code) as products_count_2020
@@ -70,7 +70,7 @@ order by Difference desc;
 The final output should contain these fields,
 product_code
 product
-manufacturing_cost
+manufacturing_cost#
 
 select p.product_code, p.product, m.manufacturing_cost
 from dim_product p
@@ -90,7 +90,7 @@ average high pre_invoice_discount_pct for the fiscal year 2021 and in the
 Indian market. The final output contains these fields,
 customer_code
 customer
-average_discount_percentage
+average_discount_percentage#
 
 WITH TBL1 AS
 (SELECT customer_code AS A, AVG(pre_invoice_discount_pct) AS B FROM fact_pre_invoice_deductions
@@ -112,7 +112,7 @@ high-performing months and take strategic decisions.
 The final report contains these columns:
 Month
 Year
-Gross sales Amount
+Gross sales Amount#
 
 SELECT CONCAT(MONTHNAME(FS.date), ' (', YEAR(FS.date), ')') AS 'Month', FS.fiscal_year,
        ROUND(SUM(G.gross_price*FS.sold_quantity), 2) AS Gross_sales_Amount
@@ -125,7 +125,7 @@ ORDER BY FS.fiscal_year ;
 #8. In which quarter of 2020, got the maximum total_sold_quantity? The final
 output contains these fields sorted by the total_sold_quantity,
 Quarter
-total_sold_quantity
+total_sold_quantity#
 
 select 
         case 
@@ -144,7 +144,7 @@ order by total_sold_quantity desc;
 and the percentage of contribution? The final output contains these fields,
 channel
 gross_sales_mln
-percentage
+percentage#
 
 
 WITH temp_table AS (
@@ -170,7 +170,7 @@ division
 product_code
 product
 total_sold_quantity
-rank_order
+rank_order#
 
 
 with cte as(
