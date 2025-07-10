@@ -1,15 +1,15 @@
-# 1. Provide the list of markets in which customer "Atliq Exclusive" operates its
-business in the APAC region.#
+/*1. Provide the list of markets in which customer "Atliq Exclusive" operates its
+business in the APAC region.*/
 
 SELECT
     DISTINCT market FROM  dim_customer
 WHERE region = 'APAC' AND customer = "Atliq Exclusive";
 
-# 2.  What is the percentage of unique product increase in 2021 vs. 2020? The
+/* 2.  What is the percentage of unique product increase in 2021 vs. 2020? The
 final output contains these fields,
 unique_products_2020
 unique_products_2021
-percentage_chg#
+percentage_chg*/
 
 with cte20 as
 (select count(distinct product_code) as unique_products_2020
@@ -26,22 +26,22 @@ from cte20
 cross join 
 cte21;
 
-# 3. Provide a report with all the unique product counts for each segment and
+/* 3. Provide a report with all the unique product counts for each segment and
 sort them in descending order of product counts. The final output contains 2 fields,
 segment
-product_count#
+product_count*/
 
 select segment , count(distinct product_code) as product_count
 from dim_product
 group by segment
 order by product_count desc;
 
-# 4. Follow-up: Which segment had the most increase in unique products in
+/* 4. Follow-up: Which segment had the most increase in unique products in
 2021 vs 2020? The final output contains these fields,
 segment
 product_count_2020
 product_count_2021
-difference#
+difference*/
 
 with prod_20 as(
 select p.segment , count(distinct fs.product_code) as products_count_2020
@@ -66,11 +66,11 @@ join prod_21
 on prod_20.segment = prod_21.segment
 order by Difference desc;
 
-#5. Get the products that have the highest and lowest manufacturing costs.
+/*5. Get the products that have the highest and lowest manufacturing costs.
 The final output should contain these fields,
 product_code
 product
-manufacturing_cost#
+manufacturing_cost*/
 
 select p.product_code, p.product, m.manufacturing_cost
 from dim_product p
@@ -85,12 +85,12 @@ or
                      select min(manufacturing_cost) from fact_manufacturing_cost
 );
 
-#6. Generate a report which contains the top 5 customers who received an
+/*6. Generate a report which contains the top 5 customers who received an
 average high pre_invoice_discount_pct for the fiscal year 2021 and in the
 Indian market. The final output contains these fields,
 customer_code
 customer
-average_discount_percentage#
+average_discount_percentage*/
 
 WITH TBL1 AS
 (SELECT customer_code AS A, AVG(pre_invoice_discount_pct) AS B FROM fact_pre_invoice_deductions
@@ -106,13 +106,13 @@ ON TBL1.A = TBL2.C
 ORDER BY average_discount_percentage DESC
 LIMIT 5 
 
-#7. Get the complete report of the Gross sales amount for the customer “Atliq
+/*7. Get the complete report of the Gross sales amount for the customer “Atliq
 Exclusive” for each month. This analysis helps to get an idea of low and
 high-performing months and take strategic decisions.
 The final report contains these columns:
 Month
 Year
-Gross sales Amount#
+Gross sales Amount*/
 
 SELECT CONCAT(MONTHNAME(FS.date), ' (', YEAR(FS.date), ')') AS 'Month', FS.fiscal_year,
        ROUND(SUM(G.gross_price*FS.sold_quantity), 2) AS Gross_sales_Amount
@@ -122,10 +122,10 @@ WHERE C.customer = 'Atliq Exclusive'
 GROUP BY  Month, FS.fiscal_year 
 ORDER BY FS.fiscal_year ;
 
-#8. In which quarter of 2020, got the maximum total_sold_quantity? The final
+/*8. In which quarter of 2020, got the maximum total_sold_quantity? The final
 output contains these fields sorted by the total_sold_quantity,
 Quarter
-total_sold_quantity#
+total_sold_quantity*/
 
 select 
         case 
@@ -140,11 +140,11 @@ where fiscal_year = 2020
 group by Quarter 
 order by total_sold_quantity desc;
 
-#9. Which channel helped to bring more gross sales in the fiscal year 2021
+/*9. Which channel helped to bring more gross sales in the fiscal year 2021
 and the percentage of contribution? The final output contains these fields,
 channel
 gross_sales_mln
-percentage#
+percentage*/
 
 
 WITH temp_table AS (
@@ -163,14 +163,14 @@ SELECT
   round(total_sales/(sum(total_sales) OVER())*100,2) AS percentage 
 FROM temp_table ;
 
-#10. Get the Top 3 products in each division that have a high
+/*10. Get the Top 3 products in each division that have a high
 total_sold_quantity in the fiscal_year 2021? The final output contains these
 fields,
 division
 product_code
 product
 total_sold_quantity
-rank_order#
+rank_order*/
 
 
 with cte as(
